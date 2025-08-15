@@ -40,9 +40,9 @@ public class NinjaController {
         return "Alterar Ninja por Id";
     }
     //Deletar Ninjas (Delete)
-    @DeleteMapping("/deletarID")
-    public String deletarNinjaPorId(){
-        return "Deletar Ninja por id";
+    @DeleteMapping("/deletar/{id}")
+    public void deletarNinjaPorId(@PathVariable Long id){
+       ninjaService.deletarNinjaPorId(id);
     }
     //Ou seja é o CRUD
 }
