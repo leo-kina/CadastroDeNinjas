@@ -8,7 +8,7 @@ import java.util.Optional;
 
 @Service
 public class NinjaService {
-
+    private NinjaMapper ninjaMapper;
     private NinjaRepository ninjaRepository;
 
     public NinjaService(NinjaRepository ninjaRepository) {
@@ -26,8 +26,10 @@ public class NinjaService {
     }
     //criar um novo ninja
 
-    public NinjaModel criarNinja(NinjaModel ninja){
-        return ninjaRepository.save(ninja);
+    public NinjaDTO criarNinja(NinjaDTO ninjaDTO){
+        NinjaModel ninja = ninjaMapper.map(ninjaDTO);
+        ninja = ninjaRepository.save(ninja);
+        return ninjaMapper.map(ninja);
     }
 
     //deletar o ninja - tem que ser um metodo void
